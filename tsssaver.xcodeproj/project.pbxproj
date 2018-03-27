@@ -36,6 +36,7 @@
 		B61FC5CB206A4DA000DC6681 /* AppIcon76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B61FC5BD206A4DA000DC6681 /* AppIcon76x76@2x.png */; };
 		B61FC5CC206A4DA000DC6681 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B61FC5BE206A4DA000DC6681 /* Info.plist */; };
 		B61FC5CD206A4DA000DC6681 /* AppIcon40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = B61FC5BF206A4DA000DC6681 /* AppIcon40x40.png */; };
+		B6957340206A564B000A906D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6957337206A5401000A906D /* IOKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,13 @@
 		B61FC5D4206A4DC500DC6681 /* Entitlements.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Entitlements.xml; sourceTree = "<group>"; };
 		B61FC5D5206A4DD900DC6681 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B61FC5D6206A4DD900DC6681 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B6957337206A5401000A906D /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
+		B695733A206A5555000A906D /* IOTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOTypes.h; sourceTree = "<group>"; };
+		B695733B206A5555000A906D /* iokitmig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iokitmig.h; sourceTree = "<group>"; };
+		B695733C206A5555000A906D /* IOKitKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOKitKeys.h; sourceTree = "<group>"; };
+		B695733D206A5555000A906D /* IOReturn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOReturn.h; sourceTree = "<group>"; };
+		B695733E206A5555000A906D /* OSMessageNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSMessageNotification.h; sourceTree = "<group>"; };
+		B695733F206A5555000A906D /* IOKitLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOKitLib.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6957340206A564B000A906D /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +120,7 @@
 		B61FC557206A4CCB00DC6681 = {
 			isa = PBXGroup;
 			children = (
+				B6957339206A5555000A906D /* IOKit */,
 				B61FC5D5206A4DD900DC6681 /* LICENSE */,
 				B61FC5D6206A4DD900DC6681 /* README.md */,
 				B61FC5D4206A4DC500DC6681 /* Entitlements.xml */,
@@ -120,6 +130,7 @@
 				B61FC583206A4D2500DC6681 /* src */,
 				B61FC577206A4CCC00DC6681 /* tsssaverTests */,
 				B61FC561206A4CCB00DC6681 /* Products */,
+				B6957336206A5400000A906D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -199,6 +210,27 @@
 				B61FC5D3206A4DC400DC6681 /* control */,
 			);
 			path = DEBIAN;
+			sourceTree = "<group>";
+		};
+		B6957336206A5400000A906D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6957337206A5401000A906D /* IOKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B6957339206A5555000A906D /* IOKit */ = {
+			isa = PBXGroup;
+			children = (
+				B695733A206A5555000A906D /* IOTypes.h */,
+				B695733B206A5555000A906D /* iokitmig.h */,
+				B695733C206A5555000A906D /* IOKitKeys.h */,
+				B695733D206A5555000A906D /* IOReturn.h */,
+				B695733E206A5555000A906D /* OSMessageNotification.h */,
+				B695733F206A5555000A906D /* IOKitLib.h */,
+			);
+			path = IOKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -462,12 +494,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HSX93Q5QCS;
-				INFOPLIST_FILE = tsssaver/Info.plist;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/";
+				INFOPLIST_FILE = "$(SRCROOT)/src/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xuanliu.tsssaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/src/TSSsaver-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -477,12 +515,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HSX93Q5QCS;
-				INFOPLIST_FILE = tsssaver/Info.plist;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/";
+				INFOPLIST_FILE = "$(SRCROOT)/src/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xuanliu.tsssaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/src/TSSsaver-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

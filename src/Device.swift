@@ -13,7 +13,7 @@ struct Device {
     static let boardConfig = Sysctl.machine
 
     static var ecid: String? {
-        return get_ecid() as String
+        return get_ecid() as? String
 
         // TOOD: Fix my pure swift rewrite :(
         
